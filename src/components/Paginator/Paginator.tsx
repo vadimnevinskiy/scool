@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect, useState} from 'react';
 import classes from './Paginator.module.css'
 import {useDispatch, useSelector} from "react-redux";
 import {setCurrentPage} from "../../redux/actions/Users";
@@ -12,6 +12,18 @@ type PropsType = {
 const Paginator: React.FC<PropsType> = ({totalCount, currentPage, pageSize}) => {
     const dispatch = useDispatch()
     const [pages, setPages] = useState<number[]>([])
+    const [portionPages, setPortionPages] = useState<number[]>([])
+
+    const [portionNumber, setPortionNumber] = useState(0)
+    const portionSize = 10
+    const startPortion = portionNumber * portionSize
+    const endPortion = startPortion + portionSize
+
+    useEffect(() => {
+        generatePages(totalCount, pageSize)
+    }, [totalCount])
+
+
 
 
     const generatePages = (totalCount: number, pageSize: number) => {
@@ -21,28 +33,53 @@ const Paginator: React.FC<PropsType> = ({totalCount, currentPage, pageSize}) => 
             arrPages.push(i)
         }
         setPages(arrPages)
+        slicePages(startPortion, endPortion)
     }
 
+
     useEffect(() => {
-        generatePages(totalCount, pageSize)
-    }, [totalCount])
+        slicePages(startPortion, endPortion)
+    }, [portionNumber, pages])
+
+    const slicePages = (startPortion: number, endPortion: number) => {
+        setPortionPages(pages.slice(startPortion, endPortion))
+    }
 
 
 
     const changePage = (currentPage: number) => {
-        // alert(currentPage)
         dispatch(setCurrentPage(currentPage))
     }
 
+
+    const changePortion = (argument: string) => {
+        if (argument === 'decrement' && portionNumber > 1 ) {
+            setPortionNumber(portionNumber - 1)
+        } else if (argument === 'increment' && (portionNumber + 1) < (pages.length / portionSize)) {
+            setPortionNumber(portionNumber + 1)
+        }
+    }
+
+
+
     return (
         <div className={classes.paginator}>
+            <span onClick={() => changePortion('decrement')}>
+                <i className="material-icons">arrow_back</i>
+            </span>
+
             {
-                pages.map(item => {
+                portionPages.map(item => {
                     return (
-                        <span key={item} className={currentPage === item ? classes.active : ''} onClick={() => changePage(item)}>{item}</span>
+                        <span key={item} className={currentPage === item ? classes.active : ''}
+                              onClick={() => changePage(item)}>{item}</span>
                     )
                 })
             }
+
+            <span onClick={() => changePortion('increment')}>
+                <i className="material-icons">arrow_forward</i>
+            </span>
         </div>
     );
 };

@@ -1,15 +1,20 @@
 .paginator{
-    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
     padding: 10px 0px;
 }
 .paginator span{
     text-align: center;
-    display: inline-block;
-    background: #cccccc;
-    padding: 10px 0px;
-    margin: 0px 5px 10px;
     width: 50px;
+    background: #cccccc;
+    padding: 10px 0px 10px 0px;
+    margin: 0px 5px 10px;
     cursor: pointer;
+    -moz-user-select: none;
+    -khtml-user-select: none;
+    user-select: none;
 }
 .paginator span.active{
     background: #808080;
