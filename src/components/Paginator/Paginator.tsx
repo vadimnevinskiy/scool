@@ -53,10 +53,14 @@ const Paginator: React.FC<PropsType> = ({totalCount, currentPage, pageSize}) => 
 
 
     const changePortion = (argument: string) => {
-        if (argument === 'decrement' && portionNumber > 1 ) {
+        if (argument === 'decrement' && portionNumber >= 1 ) {
             setPortionNumber(portionNumber - 1)
-        } else if (argument === 'increment' && (portionNumber + 1) < (pages.length / portionSize)) {
+        } else if (argument === 'increment' && portionNumber <= (pages.length / portionSize)) {
             setPortionNumber(portionNumber + 1)
+        } else if (argument === 'first') {
+            setPortionNumber(0)
+        } else if (argument === 'last') {
+            setPortionNumber((pages.length / portionSize) - 1)
         }
     }
 
@@ -64,6 +68,9 @@ const Paginator: React.FC<PropsType> = ({totalCount, currentPage, pageSize}) => 
 
     return (
         <div className={classes.paginator}>
+            <span onClick={() => changePortion('first')}>
+                <i className="material-icons">first_page</i>
+            </span>
             <span onClick={() => changePortion('decrement')}>
                 <i className="material-icons">arrow_back</i>
             </span>
@@ -79,6 +86,9 @@ const Paginator: React.FC<PropsType> = ({totalCount, currentPage, pageSize}) => 
 
             <span onClick={() => changePortion('increment')}>
                 <i className="material-icons">arrow_forward</i>
+            </span>
+            <span onClick={() => changePortion('last')}>
+                <i className="material-icons">last_page</i>
             </span>
         </div>
     );
