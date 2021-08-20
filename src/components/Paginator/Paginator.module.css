@@ -1,0 +1,17 @@
+.paginator{
+    text-align: center;
+    padding: 10px 0px;
+}
+.paginator span{
+    text-align: center;
+    display: inline-block;
+    background: #cccccc;
+    padding: 10px 0px;
+    margin: 0px 5px 10px;
+    width: 50px;
+    cursor: pointer;
+}
+.paginator span.active{
+    background: #808080;
+    color: #ffffff;
+}

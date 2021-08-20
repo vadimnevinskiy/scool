@@ -1,5 +1,5 @@
 import {ActionsUserReducerTypes, UsersStateType} from "./types"
-import { ADD_USERS } from "./vars"
+import {ADD_TOTAL_COUNT, ADD_USERS, SET_CURRENT_PAGE} from "./vars"
 
 
 const initialState: UsersStateType = {
@@ -17,6 +17,16 @@ const userReducer = (state: UsersStateType = initialState, action: ActionsUserRe
             return {
                 ...state,
                 users: action.users
+            }
+        case ADD_TOTAL_COUNT:
+            return {
+                ...state,
+                totalCount: action.totalCount
+            }
+        case SET_CURRENT_PAGE:
+            return {
+                ...state,
+                currentPage: action.currentPage
             }
     }
     return state

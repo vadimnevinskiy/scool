@@ -1,5 +1,5 @@
-import {ADD_PROFILE, ADD_USERS} from "../vars";
-export type ActionsUserReducerTypes = ActionSetUsersType
+import {ADD_PROFILE, ADD_TOTAL_COUNT, ADD_USERS, SET_CURRENT_PAGE} from "../vars";
+export type ActionsUserReducerTypes = ActionSetUsersType | ActionSetTotalCountType | ActionSetCurrentPageType
 export type ActionsProfileReducerTypes = ActionSetProfileType
 
 
@@ -8,10 +8,19 @@ export type ActionSetUsersType = {
     type: typeof ADD_USERS,
     users: UserType[]
 }
+export type ActionSetTotalCountType = {
+    type: typeof ADD_TOTAL_COUNT,
+    totalCount: number
+}
+export type ActionSetCurrentPageType = {
+    type: typeof SET_CURRENT_PAGE,
+    currentPage: number
+}
 export type ActionSetProfileType = {
     type: typeof ADD_PROFILE,
     profile: ProfileType
 }
+
 
 
 //State Types

@@ -1,2 +1,4 @@
 export const ADD_USERS = 'ADD_USERS'
+export const ADD_TOTAL_COUNT = 'ADD_TOTAL_COUNT'
+export const SET_CURRENT_PAGE = 'SET_CURRENT_PAGE'
 export const ADD_PROFILE = 'ADD_PROFILE'

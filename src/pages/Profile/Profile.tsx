@@ -1,16 +1,16 @@
 import React, {useEffect} from 'react';
-import classes from './Profile.module.css';
-import avatar from "../../assets/images/defaultimg.jpg";
-import {useHistory} from 'react-router-dom';
-import {ProfileAPI} from "../../redux/api";
+import {NavLink, useHistory} from 'react-router-dom';
 import {useDispatch, useSelector} from "react-redux";
-import {setProfile} from "../../redux/actions/Profile";
+import {ProfileAPI} from "../../redux/api";
 import {AppStateType} from "../../redux/store";
+import {setProfile} from "../../redux/actions/Profile";
 import Contacts from "../../components/Contacts/Contacts";
 import LookingForAJob from "../../components/LookingForAJob/LookingForAJob";
 import Avatar from '../../components/Avatar/Avatar';
 import SimpleTextBlock from "../../components/SimpleTextBlock/SimpleTextBlock";
 
+import classes from './Profile.module.css';
+import avatar from "../../assets/images/defaultimg.jpg";
 
 
 const Profile = () => {
@@ -56,6 +56,12 @@ const Profile = () => {
                     profile && profile.lookingForAJobDescription &&
                     <LookingForAJob lookingForAJob={profile.lookingForAJob} lookingForAJobDescription={profile.lookingForAJobDescription} />
                 }
+
+                <div className="fixed-action-btn">
+                    <NavLink to={'/users'}  className="btn-floating btn-large red">
+                        <i className="large material-icons">arrow_back</i>
+                    </NavLink>
+                </div>
             </div>
     );
 };
