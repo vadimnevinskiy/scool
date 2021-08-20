@@ -14,6 +14,7 @@ const Paginator: React.FC<PropsType> = ({totalCount, currentPage, pageSize}) => 
     const [pages, setPages] = useState<number[]>([])
     const [portionPages, setPortionPages] = useState<number[]>([])
 
+    //TODO need to remember number of current portion for comes from profile page
     const [portionNumber, setPortionNumber] = useState(0)
     const portionSize = 10
     const startPortion = portionNumber * portionSize
@@ -63,6 +64,7 @@ const Paginator: React.FC<PropsType> = ({totalCount, currentPage, pageSize}) => 
             setPortionNumber((pages.length / portionSize) - 1)
         }
     }
+
 
 
 
