@@ -1,0 +1,13 @@
+.contacts{
+    text-align: center;
+}
+.contacts a{
+    display: inline-block;
+    width: 30px;
+    height: 30px;
+    margin: 0px 10px;
+}
+.contacts a img{
+    width: 30px;
+    height: 30px;
+}

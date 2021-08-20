@@ -1,0 +1,14 @@
+.UserImage{
+
+}
+.UserImage img{
+    width: 100%;
+}
+
+.userName{
+    text-shadow: 2px 2px 2px #000000;
+    font-weight: bold;
+}
+.cardContent{
+    height: 50px;
+}

@@ -1,0 +1,17 @@
+.lookingForAJob{
+    text-align: center;
+}
+.lookingForAJob span{
+    display: inline-block;
+    background: #cccccc;
+    padding: 3px 20px;
+    border-radius: 20px;
+    color: #ffffff;
+}
+
+.lookingForAJob span.active{
+    background: green;
+}
+.lookingForAJob span.inactive{
+    background: red;
+}
