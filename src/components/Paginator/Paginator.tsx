@@ -56,7 +56,7 @@ const Paginator: React.FC<PropsType> = ({totalCount, currentPage, pageSize}) => 
     const changePortion = (argument: string) => {
         if (argument === 'decrement' && portionNumber >= 1 ) {
             setPortionNumber(portionNumber - 1)
-        } else if (argument === 'increment' && portionNumber <= (pages.length / portionSize)) {
+        } else if (argument === 'increment' && (portionNumber + 1) < (pages.length / portionSize)) {
             setPortionNumber(portionNumber + 1)
         } else if (argument === 'first') {
             setPortionNumber(0)
