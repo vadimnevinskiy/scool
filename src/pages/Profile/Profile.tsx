@@ -30,6 +30,12 @@ const Profile = () => {
         }
     }, [userId])
 
+    //For reset profile when 
+    const goBack = (e: any) => {
+        e.preventDefault()
+        history.push('/users')
+        dispatch(setProfile(null))
+    }
 
     return (
             <div>
@@ -58,9 +64,9 @@ const Profile = () => {
                 }
 
                 <div className="fixed-action-btn">
-                    <NavLink to={'/users'}  className="btn-floating btn-large red">
+                    <a href="#" onClick={(e) => goBack(e)} className="btn-floating btn-large red">
                         <i className="large material-icons">arrow_back</i>
-                    </NavLink>
+                    </a>
                 </div>
             </div>
     );
