@@ -3,6 +3,7 @@ import './App.css';
 import 'materialize-css'
 import {Route} from "react-router-dom";
 import Header from "./components/Header/Header";
+import Preloader from "./components/Preloader/Preloader";
 
 
 const Home = React.lazy(() => import("./pages/Home/Home"))
@@ -13,7 +14,7 @@ function App() {
     return (
         <div>
             <Header />
-            <Suspense fallback={<div>Loading...</div>}>
+            <Suspense fallback={<Preloader />}>
                 <Route path={'/'} exact render={() => <Home />}/>
                 <Route path={'/users'}  render={() => <Users />}/>
                 <Route path={'/profile/:userId?'} render={() => <Profile />}/>

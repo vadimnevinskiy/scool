@@ -1,5 +1,5 @@
-import {ADD_PROFILE, ADD_TOTAL_COUNT, ADD_USERS, SET_CURRENT_PAGE} from "../vars";
-export type ActionsUserReducerTypes = ActionSetUsersType | ActionSetTotalCountType | ActionSetCurrentPageType
+import {ADD_PROFILE, ADD_TOTAL_COUNT, ADD_USERS, FETCHING_TOGGLE, SET_CURRENT_PAGE, SET_CURRENT_PORTION} from "../vars";
+export type ActionsUserReducerTypes = ActionSetUsersType | ActionSetTotalCountType | ActionSetCurrentPageType | ActionSetFetchingType | ActionSetCurrentPortionType
 export type ActionsProfileReducerTypes = ActionSetProfileType
 
 
@@ -20,6 +20,14 @@ export type ActionSetProfileType = {
     type: typeof ADD_PROFILE,
     profile: ProfileType
 }
+export type ActionSetFetchingType = {
+    type: typeof FETCHING_TOGGLE
+    isFetching: boolean
+}
+export type ActionSetCurrentPortionType = {
+    type: typeof SET_CURRENT_PORTION
+    currentPortion: number
+}
 
 
 
@@ -28,7 +36,9 @@ export type UsersStateType = {
     users: UserType[],
     totalCount: number,
     pageSize: number,
-    currentPage: number
+    currentPage: number,
+    currentPortion: number,
+    isFetching: boolean
 }
 export type ProfileStateType = {
     profile: ProfileType | null

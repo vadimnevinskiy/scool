@@ -1,5 +1,5 @@
 import {ActionSetUsersType, UserType} from "../types";
-import {ADD_TOTAL_COUNT, ADD_USERS, SET_CURRENT_PAGE} from "../vars";
+import {ADD_TOTAL_COUNT, ADD_USERS, FETCHING_TOGGLE, SET_CURRENT_PAGE, SET_CURRENT_PORTION} from "../vars";
 
 export let setUsers = (users: Array<UserType>): ActionSetUsersType => {
     return {
@@ -22,4 +22,16 @@ export let setCurrentPage = (currentPage: number) => {
     }
 }
 
+export let setFetching = (isFetching: boolean) => {
+    return {
+        type: FETCHING_TOGGLE,
+        isFetching
+    }
+}
 
+export let setCurrentPortion = (portionNumber: number) => {
+    return {
+        type: SET_CURRENT_PORTION,
+        portionNumber
+    }
+}

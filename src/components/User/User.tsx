@@ -10,7 +10,7 @@ type PropsType = {
 }
 const User: React.FC<PropsType> = ({user}) => {
     return (
-        <div className="col s6 m4 l3 xl2">
+        <div className="col s12 m6 l4 xl3">
             <div className="card  blue darken-4">
                 <div className={classes.UserImage + " card-image"}>
                     {

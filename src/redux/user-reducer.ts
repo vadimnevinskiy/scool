@@ -1,12 +1,14 @@
 import {ActionsUserReducerTypes, UsersStateType} from "./types"
-import {ADD_TOTAL_COUNT, ADD_USERS, SET_CURRENT_PAGE} from "./vars"
+import {ADD_TOTAL_COUNT, ADD_USERS, FETCHING_TOGGLE, SET_CURRENT_PAGE, SET_CURRENT_PORTION} from "./vars"
 
 
 const initialState: UsersStateType = {
     users: [],
     totalCount: 0,
     pageSize: 10,
-    currentPage: 1
+    currentPage: 1,
+    currentPortion: 0,
+    isFetching: false
 }
 
 
@@ -27,6 +29,16 @@ const userReducer = (state: UsersStateType = initialState, action: ActionsUserRe
             return {
                 ...state,
                 currentPage: action.currentPage
+            }
+        case FETCHING_TOGGLE:
+            return {
+                ...state,
+                isFetching: action.isFetching
+            }
+        case SET_CURRENT_PORTION:
+            return {
+                ...state,
+                currentPortion: action.currentPortion
             }
     }
     return state
