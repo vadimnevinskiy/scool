@@ -1,21 +1,19 @@
 import React, {useCallback, useEffect, useState} from 'react';
 import classes from './Paginator.module.css'
 import {useDispatch, useSelector} from "react-redux";
-import {setCurrentPage} from "../../redux/actions/Users";
-import {AppStateType} from "../../redux/store";
+import {setCurrentPage, setCurrentPortion} from "../../redux/actions/Users";
 
 type PropsType = {
     totalCount: number,
     currentPage: number,
-    pageSize: number
+    pageSize: number,
+    currentPortion: number
 }
-const Paginator: React.FC<PropsType> = ({totalCount, currentPage, pageSize}) => {
+const Paginator: React.FC<PropsType> = ({totalCount, currentPage, pageSize, currentPortion}) => {
     const dispatch = useDispatch()
     const [pages, setPages] = useState<number[]>([])
     const [portionPages, setPortionPages] = useState<number[]>([])
-
-    //TODO need to remember number of current portion for comes from profile page
-    const [portionNumber, setPortionNumber] = useState(0)
+    const [portionNumber, setPortionNumber] = useState(currentPortion)
     const portionSize = 8
     const startPortion = portionNumber * portionSize
     const endPortion = startPortion + portionSize
@@ -38,7 +36,8 @@ const Paginator: React.FC<PropsType> = ({totalCount, currentPage, pageSize}) => 
 
     useEffect(() => {
         slicePages(startPortion, endPortion)
-    }, [portionNumber, pages])
+        dispatch(setCurrentPortion(Math.ceil(portionNumber)))
+    }, [portionNumber, pages, currentPortion])
 
     const slicePages = (startPortion: number, endPortion: number) => {
         setPortionPages(pages.slice(startPortion, endPortion))

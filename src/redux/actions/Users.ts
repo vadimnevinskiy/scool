@@ -29,9 +29,9 @@ export let setFetching = (isFetching: boolean) => {
     }
 }
 
-export let setCurrentPortion = (portionNumber: number) => {
+export let setCurrentPortion = (currentPortion: number) => {
     return {
         type: SET_CURRENT_PORTION,
-        portionNumber
+        currentPortion
     }
 }

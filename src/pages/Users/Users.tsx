@@ -29,9 +29,10 @@ const Users = () => {
     }, [currentPage])
 
 
+
     return (
         <>
-            <Paginator totalCount={totalCount} currentPage={currentPage} pageSize={pageSize}/>
+            <Paginator totalCount={totalCount} currentPage={currentPage} pageSize={pageSize} currentPortion={currentPortion} />
             <div className="row">
                 {
                     users.map((user: UserType) => {
