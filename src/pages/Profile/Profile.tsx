@@ -11,6 +11,7 @@ import SimpleTextBlock from "../../components/SimpleTextBlock/SimpleTextBlock";
 
 import classes from './Profile.module.css';
 import avatar from "../../assets/images/defaultimg.jpg";
+import PreloaderCircular from "../../components/Preloader/PreloaderCircular";
 
 
 const Profile = () => {
@@ -30,7 +31,7 @@ const Profile = () => {
         }
     }, [userId])
 
-    //For reset profile when 
+    //For reset profile when
     const goBack = (e: any) => {
         e.preventDefault()
         history.push('/users')
@@ -38,6 +39,11 @@ const Profile = () => {
     }
 
     return (
+        <>
+            {
+                !profile &&
+                <PreloaderCircular />
+            }
             <div>
                 {
                     profile && profile.photos.small
@@ -69,6 +75,7 @@ const Profile = () => {
                     </a>
                 </div>
             </div>
+        </>
     );
 };
 
